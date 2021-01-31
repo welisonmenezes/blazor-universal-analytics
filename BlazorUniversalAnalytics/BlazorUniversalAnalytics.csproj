@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Authors>Welison Menezes</Authors>
+    <Description>Blazor extensions for Analytics. Supported platforms: Google Analytics, GTAG, GTM and Facebook Pixel.</Description>
+    <Copyright>2021</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <NeutralLanguage>Blazor, Analytics, Google Analytics, GTAG, GTM and Facebook Pixel</NeutralLanguage>
+    <PackageProjectUrl>https://github.com/welisonmenezes/blazor-universal-analytics</PackageProjectUrl>
+  </PropertyGroup>
+
+  
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
+  </ItemGroup>
+
+</Project>
