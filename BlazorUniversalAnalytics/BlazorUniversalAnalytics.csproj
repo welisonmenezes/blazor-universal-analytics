@@ -8,6 +8,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <NeutralLanguage>Blazor, Analytics, Google Analytics, GTAG, GTM and Facebook Pixel</NeutralLanguage>
     <PackageProjectUrl>https://github.com/welisonmenezes/blazor-universal-analytics</PackageProjectUrl>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   

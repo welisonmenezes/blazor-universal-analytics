@@ -20,12 +20,12 @@ The tracker listens to every navigation change while it's rendered on a page.
 
 ```diff
     <Router ... />
-+   <NavigationTracker />
++   <BUANavigationTracker />
 ```
 
 ## Setting up Analytics
 
-Inside your main `Startup`/`Program`, call `AddGoogleAnalytics`. This will configure your GTAG_ID automatically.
+Inside your main `Startup`/`Program`, call `AddBUA`. This will configure your GTAG_ID automatically.
 
 ```diff
 +   builder.Services.AddBUA("YOUR_GTAG_ID", "YOUR_FBPIXEL_ID", "YOUR_GTM_ID");
