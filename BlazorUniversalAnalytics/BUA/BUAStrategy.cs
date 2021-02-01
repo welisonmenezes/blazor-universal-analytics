@@ -31,6 +31,8 @@ public sealed class BUAStrategy : IBUA
     {
         var module = await Module;
 
+        await module.InvokeAsync<string>("BUAInitGlobals");
+
         if (HasToStartFacebookPixel())
         {
             await module.InvokeAsync<string>("BUAInitializeFacebookPixel", _FBPID);
@@ -48,13 +50,30 @@ public sealed class BUAStrategy : IBUA
         await module.InvokeAsync<string>("BUATrackNavigation", uri, _GAID);
     }
 
-    public async Task TrackEvent(
+    public async Task TrackEventGtag(
         string eventName,
         string eventValue,
-        string eventCategory = null)
+        string eventCategory = null,
+        string eventLabel = null)
     {
         var module = await Module;
-        await module.InvokeAsync<string>("BUATrackEvent");
+        await module.InvokeAsync<string>("BUATrackEventsGtag", eventName, eventValue, eventCategory, eventLabel);
+    }
+
+    public async Task TrackEventGtag(
+        string eventName,
+        object objectValue = null)
+    {
+        var module = await Module;
+        await module.InvokeAsync<string>("BUATrackEventsGtagByObjectValue", eventName, objectValue);
+    }
+
+    public async Task TrackEventFacebookPixel(
+        string eventName,
+        object objectValue = null)
+    {
+        var module = await Module;
+        await module.InvokeAsync<string>("BUATrackEventsFacebookPixel", eventName, objectValue);
     }
 
     private bool HasToStartFacebookPixel()

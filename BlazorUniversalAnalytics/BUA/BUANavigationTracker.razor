@@ -10,6 +10,8 @@
     [Inject]
     protected NavigationManager NavigationManager { get; set; } = null;
 
+    protected bool IsFirstRequest = true;
+
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
@@ -27,6 +29,7 @@
         if (firstRender)
         {
             await OnLocationChanged(NavigationManager.Uri);
+            IsFirstRequest = false;
         }
     }
 
@@ -39,6 +42,9 @@
 
     private async Task OnLocationChanged(string location)
     {
-        await Analytics.TrackNavigation(location);
+        if (!IsFirstRequest)
+        {
+            await Analytics.TrackNavigation(location);
+        }
     }
 }

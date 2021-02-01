@@ -1,4 +1,5 @@
 @page "/counter"
+@using Demo.Shared
 
 <h1>Counter</h1>
 
@@ -12,10 +13,19 @@
     [Inject]
     protected IBUA Analytics { get; set; }
 
+    private WeatherForecast SampleData = new WeatherForecast
+    {
+        Date = DateTime.Now,
+        TemperatureC = 30,
+        Summary = "It's a hot day"
+    };
+
     private void IncrementCount()
     {
         currentCount++;
 
-        Analytics.TrackEvent("", "", "");
+        Analytics.TrackEventGtag("event-name", "event-value", "event-category", "event-label");
+        Analytics.TrackEventGtag("event-name", SampleData);
+        Analytics.TrackEventFacebookPixel("event-name", SampleData);
     }
 }

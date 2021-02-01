@@ -6,5 +6,9 @@ public interface IBUA
 
     Task TrackNavigation(string uri);
 
-    Task TrackEvent(string eventName, string eventValue, string eventCategory = null);
+    Task TrackEventGtag(string eventName, string eventValue, string eventCategory = null, string eventLabel = null);
+
+    Task TrackEventGtag(string eventName, object objectValue = null);
+
+    Task TrackEventFacebookPixel(string eventName, object objectValue = null);
 }

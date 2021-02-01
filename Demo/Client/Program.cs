@@ -15,7 +15,7 @@ namespace Demo.Client
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-            builder.Services.AddBUA("YOUR_GTAG_ID", "YOUR_FBPIXEL_ID", "YOUR_GTM_ID");
+            builder.Services.AddBUA("UA-143855056-1", "355993128418886", null);
 
             await builder.Build().RunAsync();
         }
