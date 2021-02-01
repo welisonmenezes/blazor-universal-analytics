@@ -36,13 +36,40 @@ If YOUR_GTM_ID is set, YOUR_GTAG_ID and YOUR_FBPIXEL_ID will be ignored as GTM w
 # How to trigger an Analytics Event
 
 ```
-[Inject]
-protected IBUA Analytics { get; set; }
+@page "/counter"
+@using Demo.Shared
 
-private void IncrementCount()
-{
-    currentCount++;
-    Analytics.TrackEvent("", "", "");
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int currentCount = 0;
+
+    [Inject]
+    protected IBUA Analytics { get; set; }
+
+    private WeatherForecast SampleData = new WeatherForecast
+    {
+        Date = DateTime.Now,
+        TemperatureC = 30,
+        Summary = "It's a hot day"
+    };
+
+    private void IncrementCount()
+    {
+        currentCount++;
+
+        Analytics.TrackEventGtag("event-name", "event-value", "event-category", "event-label");
+
+        // IMPORTANT: The object SampleDate are used below just as an example.
+        // You must to check the correct object properties on respective Analytic tool you are using.
+
+        Analytics.TrackEventGtag("event-name", SampleData);
+        Analytics.TrackEventFacebookPixel("event-name", SampleData);
+    }
 }
 ```
 
