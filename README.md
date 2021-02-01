@@ -1,8 +1,11 @@
-Blazor extensions for Analytics. Supported platforms: Google Analytics, GTAG, GTM and Facebook Pixel.<br/>
+Blazor extensions for Analytics. Supported platforms: Google Analytics, GTAG, GTM and Facebook Pixel.
 AspNetCore Version: 5.0
 
 # NuGet Package
 https://www.nuget.org/packages/BlazorUniversalAnalytics/
+
+# GitHub Repository
+https://github.com/welisonmenezes/blazor-universal-analytics
 
 # Configuration
 
@@ -34,6 +37,8 @@ Inside your main `Startup`/`Program`, call `AddBUA`. This will configure your GT
 If YOUR_GTM_ID is set, YOUR_GTAG_ID and YOUR_FBPIXEL_ID will be ignored as GTM will manage this for you. Pageview events will be heard if the embed of such scripts exists.
 
 # How to trigger an Analytics Event
+
+See below an example:
 
 ```
 @page "/counter"
