@@ -24,13 +24,17 @@
     {
         currentCount++;
 
-        //Analytics.TrackEventGtag("event-name", "event-value", "event-category", "event-label");
-
         // IMPORTANT: The object SampleDate are used below just as an example.
         // You must to check the correct object properties on respective Analytic tool you are using.
 
+        // Google Analytics
+        //Analytics.TrackEventGtag("event-name", "event-value", "event-category", "event-label");
         //Analytics.TrackEventGtag("event-name", SampleData);
+
+        // Facebook
         //Analytics.TrackEventFacebookPixel("event-name", SampleData);
-        Analytics.TrackEventGTM("event-name", SampleData);
+
+        // Google Tag Manager
+        //Analytics.TrackEventGTM("event-name", SampleData);
     }
 }

@@ -31,10 +31,15 @@ The tracker listens to every navigation change while it's rendered on a page.
 Inside your main `Startup`/`Program`, call `AddBUA`. This will configure your GTAG_ID automatically.
 
 ```diff
-+   builder.Services.AddBUA("YOUR_GTAG_ID", "YOUR_FBPIXEL_ID", "YOUR_GTM_ID");
++   builder.Services.AddBUA("YOUR_GTAG_ID", "YOUR_FBPIXEL_ID", null);
 ```
 
 If YOUR_GTM_ID is set, YOUR_GTAG_ID and YOUR_FBPIXEL_ID will be ignored as GTM will manage this for you. Pageview events will be heard if the embed of such scripts exists.
+Example:
+
+```
+    builder.Services.AddBUA(null, null, "YOUR_GTM_ID");
+```
 
 # How to trigger an Analytics Event
 
@@ -67,15 +72,19 @@ See below an example:
     {
         currentCount++;
 
-        Analytics.TrackEventGtag("event-name", "event-value", "event-category", "event-label");
-
         // IMPORTANT: The object SampleDate are used below just as an example.
         // You must to check the correct object properties on respective Analytic tool you are using.
 
-        Analytics.TrackEventGtag("event-name", SampleData);
-        Analytics.TrackEventFacebookPixel("event-name", SampleData);
+        // Google Analytics
+        //Analytics.TrackEventGtag("event-name", "event-value", "event-category", "event-label");
+        //Analytics.TrackEventGtag("event-name", SampleData);
+
+        // Facebook
+        //Analytics.TrackEventFacebookPixel("event-name", SampleData);
+
+        // Google Tag Manager
+        //Analytics.TrackEventGTM("event-name", SampleData);
     }
 }
 ```
 
-# 
