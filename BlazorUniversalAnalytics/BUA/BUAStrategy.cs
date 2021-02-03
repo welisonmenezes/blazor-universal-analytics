@@ -42,6 +42,11 @@ public sealed class BUAStrategy : IBUA
         {
             await module.InvokeAsync<string>("BUAInitializeGoogleAnalytics", _GAID);
         }
+
+        if (HasToStartGTM())
+        {
+            await module.InvokeAsync<string>("BUAInitializeGTM", _GTMID);
+        }
     }
 
     public async Task TrackNavigation(string uri)
@@ -76,21 +81,26 @@ public sealed class BUAStrategy : IBUA
         await module.InvokeAsync<string>("BUATrackEventsFacebookPixel", eventName, objectValue);
     }
 
+    public async Task TrackEventGTM(
+        string eventName,
+        object objectValue = null)
+    {
+        var module = await Module;
+        await module.InvokeAsync<string>("BUATrackEventsGTM", eventName, objectValue);
+    }
+
     private bool HasToStartFacebookPixel()
     {
-        if (!String.IsNullOrEmpty(_FBPID) && String.IsNullOrEmpty(_GTMID))
-        {
-            return true;
-        }
-        return false;
+        return !String.IsNullOrEmpty(_FBPID);
     }
 
     private bool HasToStartGoogleAnalytics()
     {
-        if (!String.IsNullOrEmpty(_GAID) && String.IsNullOrEmpty(_GTMID))
-        {
-            return true;
-        }
-        return false;
+        return !String.IsNullOrEmpty(_GAID);
+    }
+
+    private bool HasToStartGTM()
+    {
+        return !String.IsNullOrEmpty(_GTMID);
     }
 }

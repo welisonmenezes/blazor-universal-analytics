@@ -11,4 +11,6 @@ public interface IBUA
     Task TrackEventGtag(string eventName, object objectValue = null);
 
     Task TrackEventFacebookPixel(string eventName, object objectValue = null);
+
+    Task TrackEventGTM(string eventName, object objectValue = null);
 }
