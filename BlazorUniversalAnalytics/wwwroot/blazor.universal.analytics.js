@@ -99,9 +99,13 @@ export function BUATrackEventsFacebookPixel(eventName, objectValue) {
 }
 
 export function BUATrackEventsGTM(eventName, objectValue) {
-    if (eventName !== null && objectValue !== null) {
+    if (typeof objectValue === "object" && objectValue !== null) {
         objectValue['event'] = eventName;
         dataLayer.push(objectValue);
+    }
+    else
+    {
+        dataLayer.push({'event': eventName});
     }
 }
 
